@@ -634,7 +634,7 @@
         }
 
         function updateProgress() {
-            const sections = ['opening', 'pos', 'payment', 'dishwasher'];
+            const sections = ['opening', 'pos', 'dishwasher'];
             let totalCompleted = 0;
             let totalItems = 0;
 
@@ -647,7 +647,9 @@
                 
                 // 섹션별 진행률 텍스트 업데이트
                 const progressElement = document.getElementById(`${sectionName}-progress`);
-                progressElement.textContent = `${completedItems.length} / ${sectionItems.length}`;
+                if (progressElement) {
+                    progressElement.textContent = `${completedItems.length} / ${sectionItems.length}`;
+                }
                 
                 // 섹션 완료 시각적 표시
                 const section = document.querySelector(`[data-section="${sectionName}"]`);
