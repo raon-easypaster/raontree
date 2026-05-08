@@ -117,20 +117,20 @@
     </footer>
 
     <script>
-        // --- 데이터 정의 (레시피 데이터는 제거하고 메뉴판용 데이터만 유지) ---
+        // --- 데이터 정의 (가격 수정 반영) ---
         const menuData = [
             // --- COFFEE ---
             {
-                id: 'espresso', category: 'coffee', name: '에스프레소', price: 3300, desc: '진한 커피의 정수 (19.5g)', tags: ['HOT']
+                id: 'espresso', category: 'coffee', name: '에스프레소', price: 3900, desc: '진한 커피의 정수 (19.5g)', tags: ['HOT']
             },
             {
-                id: 'americano_blend', category: 'coffee', name: '아메리카노 (블렌드)', price: 3300, desc: '고소하고 묵직한 하우스 블렌드', tags: ['HOT', 'ICE']
+                id: 'americano_blend', category: 'coffee', name: '아메리카노 (블렌드)', price: 3900, desc: '고소하고 묵직한 하우스 블렌드', tags: ['HOT', 'ICE']
             },
             {
                 id: 'americano_single', category: 'coffee', name: '싱글오리진 아메리카노', price: 5000, desc: '프리미엄 원두 핸드드립', tags: ['HOT', 'ICE']
             },
             {
-                id: 'cafe_latte', category: 'coffee', name: '카페 라떼', price: 4300, desc: '고소한 우유와 에스프레소의 조화', tags: ['HOT', 'ICE']
+                id: 'cafe_latte', category: 'coffee', name: '카페 라떼', price: 4900, desc: '고소한 우유와 에스프레소의 조화', tags: ['HOT', 'ICE']
             },
             {
                 id: 'coldbrew', category: 'coffee', name: '콜드브루', price: 4500, desc: '깔끔하고 청량한 맛', tags: ['ICE']
@@ -139,10 +139,10 @@
                 id: 'coldbrew_latte', category: 'coffee', name: '콜드브루 라떼', price: 5000, desc: '숙성된 콜드브루의 부드러움', tags: ['ICE']
             },
             {
-                id: 'sweet_latte', category: 'coffee', name: '바닐라 / 모카 / 마끼아또', price: 4800, desc: '달콤한 풍미가 가득한 라떼', tags: ['HOT', 'ICE']
+                id: 'sweet_latte', category: 'coffee', name: '바닐라 / 모카 / 마끼아또', price: 5300, desc: '달콤한 풍미가 가득한 라떼', tags: ['HOT', 'ICE']
             },
             {
-                id: 'einspanner', category: 'coffee', name: '아인슈패너 (비엔나)', price: 5000, desc: '단짠단짠 수제 크림 커피', tags: ['Only ICE']
+                id: 'einspanner', category: 'coffee', name: '아인슈패너 (비엔나)', price: 6000, desc: '단짠단짠 수제 크림 커피', tags: ['Only ICE']
             },
 
             // --- DRINK ---
@@ -150,7 +150,7 @@
                 id: 'tea_chamomile', category: 'drink', name: '유기농 허브차 (캐모마일)', price: 3500, desc: '심신 안정 (ICE +500원)', tags: ['HOT', 'ICE']
             },
             {
-                id: 'fruit_latte', category: 'drink', name: '수제 과일 라떼', price: 5000, desc: '딸기 등 신선한 계절 과일', tags: ['ICE']
+                id: 'fruit_latte', category: 'drink', name: '수제 과일 라떼', price: 6000, desc: '딸기 등 신선한 계절 과일', tags: ['ICE']
             },
             {
                 id: 'passion_fruit', category: 'drink', name: '수제 패션후르츠', price: 5000, desc: '톡톡 씹히는 상큼한 에이드', tags: ['ICE']
@@ -159,7 +159,13 @@
                 id: 'carrot_apple', category: 'drink', name: '당근아 사과해', price: 5000, desc: '100% 착즙 쥬스 (작은컵)', tags: ['ICE']
             },
             {
-                id: 'choco_greentea', category: 'drink', name: '초코 / 녹차 라떼', price: 4000, desc: '달콤하고 진한 라떼', tags: ['HOT', 'ICE']
+                id: 'choco_greentea', category: 'drink', name: '초코 / 녹차 라떼', price: 4500, desc: '달콤하고 진한 라떼', tags: ['HOT', 'ICE']
+            },
+            {
+                id: 'chestnut_latte', category: 'drink', name: '밤라떼', price: 6000, desc: '고소하고 달콤한 밤의 풍미', tags: ['HOT', 'ICE']
+            },
+            {
+                id: 'handmade_milktea', category: 'drink', name: '수제 밀크티', price: 6000, desc: '향긋한 홍차와 부드러운 우유의 만남', tags: ['HOT', 'ICE']
             },
             {
                 id: 'iced_tea', category: 'drink', name: '복숭아 아이스티', price: 3000, desc: '시원하고 달콤한 아이스티', tags: ['ICE']
