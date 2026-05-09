@@ -44,14 +44,13 @@
             width: 100%;
             max-width: 700px;
             background: var(--card-bg);
-            border-radius: 4px; /* 각진 모서리로 모던함 강조 */
+            border-radius: 4px;
             box-shadow: 0 15px 35px rgba(26, 60, 52, 0.08);
             overflow: hidden;
             position: relative;
             border-top: 5px solid var(--primary-color);
         }
 
-        /* 헤더 디자인 */
         .header {
             padding: 50px 40px 30px;
             text-align: center;
@@ -77,7 +76,6 @@
             margin-bottom: 30px;
         }
 
-        /* 프로그래스 바 */
         .progress-container {
             position: relative;
             padding: 0 10px;
@@ -107,7 +105,6 @@
             transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* 섹션 디자인 */
         .content {
             padding: 0;
         }
@@ -157,7 +154,6 @@
             letter-spacing: 1px;
         }
 
-        /* 섹션 완료 시 스타일 */
         .section.completed .section-title {
             color: var(--success-color);
             text-decoration: line-through;
@@ -172,12 +168,11 @@
         }
 
         .section.expanded .section-content {
-            max-height: 2000px; /* 충분히 큰 값 */
+            max-height: 2000px;
             transition: max-height 0.6s ease-in-out;
             border-bottom: 1px solid rgba(0,0,0,0.03);
         }
 
-        /* 체크리스트 아이템 */
         .checklist-group {
             padding: 10px 40px 30px;
         }
@@ -199,14 +194,13 @@
             color: var(--primary-color);
         }
 
-        /* 커스텀 체크박스 */
         .checkbox-custom {
             width: 20px;
             height: 20px;
             border: 1px solid #BBBBBB;
             margin-right: 20px;
             margin-top: 2px;
-            border-radius: 50%; /* 원형 */
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -249,7 +243,7 @@
 
         .password {
             display: inline-block;
-            background: rgba(197, 160, 89, 0.15); /* 골드 배경 연하게 */
+            background: rgba(197, 160, 89, 0.15);
             color: #8A6D3B;
             padding: 2px 8px;
             border-radius: 2px;
@@ -260,7 +254,6 @@
             border: 1px solid rgba(197, 160, 89, 0.3);
         }
 
-        /* 초기화 버튼 */
         .reset-btn {
             position: fixed;
             bottom: 40px;
@@ -287,14 +280,13 @@
             transform: rotate(180deg);
         }
 
-        /* 완료 메시지 */
         .completion-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(26, 60, 52, 0.9); /* 딥 그린 오버레이 */
+            background: rgba(26, 60, 52, 0.9);
             display: none;
             justify-content: center;
             align-items: center;
@@ -356,7 +348,6 @@
             background: var(--accent-color);
         }
 
-        /* 모바일 반응형 */
         @media (max-width: 768px) {
             body {
                 padding: 0;
@@ -414,21 +405,22 @@
                         <span class="section-icon">❖</span>
                         개점 순서
                     </div>
-                    <div class="section-status" id="opening-progress">0 / 16</div>
+                    <!-- 업데이트된 항목 수 14개로 수정 -->
+                    <div class="section-status" id="opening-progress">0 / 14</div>
                 </div>
                 <div class="section-content">
                     <div class="checklist-group">
                         <div class="checklist-item" data-item="opening-1" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
-                            <div class="item-text">1층 비밀번호 <span class="password">5678*</span> 입력</div>
+                            <div class="item-text">1층 입구 외부 전등 켜기(맨 위 스위치)</div>
                         </div>
                         <div class="checklist-item" data-item="opening-2" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
-                            <div class="item-text">간판을 꺼내 세워 놓고 1층 문 열어 놓기</div>
+                            <div class="item-text">1층 로비 2개 전등 켜기</div>
                         </div>
                         <div class="checklist-item" data-item="opening-3" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
-                            <div class="item-text">올라오는 길에 복도 불 켜기</div>
+                            <div class="item-text">2층 로비 2개 전등 켜기</div>
                         </div>
                         <div class="checklist-item" data-item="opening-4" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
@@ -436,49 +428,41 @@
                         </div>
                         <div class="checklist-item" data-item="opening-5" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
-                            <div class="item-text">입장하여 오른쪽 스위치로 전등 켜기</div>
+                            <div class="item-text">입장하여 왼쪽 스위치로 전등 켜기</div>
                         </div>
                         <div class="checklist-item" data-item="opening-6" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
-                            <div class="item-text">입구 쪽 불이 안 켜지면 스마트 띵스 어플에서 입구쪽 조명 켜기 (카페 핸드폰)</div>
+                            <div class="item-text">TV 리모컨 전원 ON (유튜브 음악 틀기)</div>
                         </div>
                         <div class="checklist-item" data-item="opening-7" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
-                            <div class="item-text">TV 리모컨 전원 ON (외부입력 2 설정)</div>
+                            <div class="item-text">TV앞에 사운드 바 소리가 안 나오면 사운드 바용 리모컨으로 전원 켜기</div>
                         </div>
                         <div class="checklist-item" data-item="opening-8" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
-                            <div class="item-text">음악이 안 켜지면 작은 리모컨으로 크롬캐스트 켜고 유튜브 음악 재생</div>
+                            <div class="item-text">(하계)포스기 아래 수납장 리모컨으로 시스템 냉난방기 3대 가동</div>
                         </div>
                         <div class="checklist-item" data-item="opening-9" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
-                            <div class="item-text">바(Bar) 벽장 리모컨으로 시스템 냉난방기 가동</div>
+                            <div class="item-text">쇼케이스 조작판 상단 두 번째(램프) 버튼 ON(OFF시)</div>
                         </div>
                         <div class="checklist-item" data-item="opening-10" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
-                            <div class="item-text">바 내부 냉난방기 가동</div>
+                            <div class="item-text">포스기 모니터 우측 하단 밑면 전원 ON</div>
                         </div>
                         <div class="checklist-item" data-item="opening-11" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
-                            <div class="item-text">쇼케이스 조작판 상단 두 번째(램프) 버튼 ON</div>
+                            <div class="item-text">바탕화면에 토스 프로그램 실행</div>
                         </div>
                         <div class="checklist-item" data-item="opening-12" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
-                            <div class="item-text">포스기 모니터 우측 하단 밑면 전원 ON</div>
+                            <div class="item-text">쇼케이스 외부 물기 제거 (여름철 필수)</div>
                         </div>
                         <div class="checklist-item" data-item="opening-13" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
-                            <div class="item-text">CCTV 모니터 ON (하단 아래쪽)</div>
-                        </div>
-                        <div class="checklist-item" data-item="opening-14" onclick="toggleItem(this)">
-                            <div class="checkbox-custom"></div>
-                            <div class="item-text">쇼케이스 외부 물기 제거 (여름철 필수)</div>
-                        </div>
-                        <div class="checklist-item" data-item="opening-15" onclick="toggleItem(this)">
-                            <div class="checkbox-custom"></div>
                             <div class="item-text">주전자 전원 버튼 누르고 물 끓이기</div>
                         </div>
-                        <div class="checklist-item" data-item="opening-16" onclick="toggleItem(this)">
+                        <div class="checklist-item" data-item="opening-14" onclick="toggleItem(this)">
                             <div class="checkbox-custom"></div>
                             <div class="item-text">오픈 청소 및 소모품(타올, 냅킨, 물 등) 채우기</div>
                         </div>
@@ -486,62 +470,7 @@
                 </div>
             </div>
 
-            <!-- Section 2: POS -->
-            <div class="section" data-section="pos">
-                <div class="section-header" onclick="toggleSection('pos')">
-                    <div class="section-title">
-                        <span class="section-icon">❖</span>
-                        POS 시스템
-                    </div>
-                    <div class="section-status" id="pos-progress">0 / 10</div>
-                </div>
-                <div class="section-content">
-                    <div class="checklist-group">
-                        <div class="checklist-item" data-item="pos-1" onclick="toggleItem(this)">
-                            <div class="checkbox-custom"></div>
-                            <div class="item-text">바탕화면 OK 포스 아이콘 더블 클릭</div>
-                        </div>
-                        <div class="checklist-item" data-item="pos-2" onclick="toggleItem(this)">
-                            <div class="checkbox-custom"></div>
-                            <div class="item-text">비밀번호 <span class="password">1234</span> 로그인</div>
-                        </div>
-                        <div class="checklist-item" data-item="pos-3" onclick="toggleItem(this)">
-                            <div class="checkbox-custom"></div>
-                            <div class="item-text">판매 관리 버튼 → 수정 없이 개점 처리</div>
-                        </div>
-                        <div class="checklist-item" data-item="pos-4" onclick="toggleItem(this)">
-                            <div class="checkbox-custom"></div>
-                            <div class="item-text">"개점 처리하시겠습니까?" → "예"</div>
-                        </div>
-                        <div class="checklist-item" data-item="pos-5" onclick="toggleItem(this)">
-                            <div class="checkbox-custom"></div>
-                            <div class="item-text">[마감 시] 상단 X 버튼 클릭</div>
-                        </div>
-                        <div class="checklist-item" data-item="pos-6" onclick="toggleItem(this)">
-                            <div class="checkbox-custom"></div>
-                            <div class="item-text">영업관리 메뉴 진입</div>
-                        </div>
-                        <div class="checklist-item" data-item="pos-7" onclick="toggleItem(this)">
-                            <div class="checkbox-custom"></div>
-                            <div class="item-text">마감정산 클릭</div>
-                        </div>
-                        <div class="checklist-item" data-item="pos-8" onclick="toggleItem(this)">
-                            <div class="checkbox-custom"></div>
-                            <div class="item-text">다음 버튼 클릭</div>
-                        </div>
-                        <div class="checklist-item" data-item="pos-9" onclick="toggleItem(this)">
-                            <div class="checkbox-custom"></div>
-                            <div class="item-text">영업마감 클릭</div>
-                        </div>
-                        <div class="checklist-item" data-item="pos-10" onclick="toggleItem(this)">
-                            <div class="checkbox-custom"></div>
-                            <div class="item-text">"마감 정산처리 하시겠습니까?" → "예"</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 3: Dishwasher -->
+            <!-- Section 2: Dishwasher (POS 시스템 삭제) -->
             <div class="section" data-section="dishwasher">
                 <div class="section-header" onclick="toggleSection('dishwasher')">
                     <div class="section-title">
@@ -634,7 +563,8 @@
         }
 
         function updateProgress() {
-            const sections = ['opening', 'pos', 'dishwasher'];
+            // POS 섹션 제거
+            const sections = ['opening', 'dishwasher'];
             let totalCompleted = 0;
             let totalItems = 0;
 
