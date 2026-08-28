@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>라온트리로스터리 · 라오스 선교 기간 안내</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6EFE3;
+    --panel: #FFFDF8;
+    --ink: #2E2018;
+    --ink-soft: #6B5C4E;
+    --bark: #3B2A1F;
+    --tree: #4F6B4A;
+    --tree-deep: #35492F;
+    --clay: #B4703D;
+    --urgent: #A5402E;
+    --urgent-bg: #FBE9E3;
+    --line: #E4D8C4;
+    --radius: 16px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  .field{
+    position: relative;
+    overflow: hidden;
+  }
+  .field::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 8% 12%, rgba(79,107,74,0.10) 0, rgba(79,107,74,0) 45%),
+      radial-gradient(circle at 92% 88%, rgba(180,112,61,0.12) 0, rgba(180,112,61,0) 50%);
+    pointer-events: none;
+  }
+
+  header{
+    background: linear-gradient(160deg, var(--bark) 0%, #2A1D15 100%);
+    color: #F3E9DA;
+    padding: 56px 24px 64px;
+    position: relative;
+    text-align: center;
+  }
+  header .eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    color: #C9A876;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  header .eyebrow::before, header .eyebrow::after{
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: #6E5A44;
+  }
+  header h1{
+    font-family: 'Gowun Batang', serif;
+    font-weight: 700;
+    font-size: clamp(28px, 5.5vw, 44px);
+    margin: 18px 0 10px;
+    letter-spacing: -0.01em;
+  }
+  header p.sub{
+    color: #C9BBA6;
+    font-size: 15px;
+    margin: 0 auto;
+    max-width: 520px;
+  }
+  .route-strip{
+    margin-top: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 999px;
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .route-strip .dot{
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #C9A876;
+  }
+
+  .curve{
+    display: block;
+    margin-top: -2px;
+  }
+
+  main{
+    max-width: 720px;
+    margin: -34px auto 0;
+    padding: 0 20px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* urgent card */
+  .urgent{
+    background: var(--urgent-bg);
+    border: 1px solid #EBC3B7;
+    border-radius: var(--radius);
+    padding: 26px 26px 24px;
+    box-shadow: 0 18px 34px -22px rgba(165,64,46,0.45);
+    margin-bottom: 30px;
+  }
+  .urgent .tag{
+    display: inline-block;
+    background: var(--urgent);
+    color: #fff;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .urgent h2{
+    font-family: 'Gowun Batang', serif;
+    font-size: 21px;
+    margin: 0 0 10px;
+    color: #7A2C1E;
+  }
+  .urgent p{
+    margin: 0 0 6px;
+    color: #5A2A20;
+    font-size: 15.5px;
+  }
+  .urgent .amount{
+    margin-top: 14px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .urgent .amount span{
+    background: #fff;
+    border: 1px solid #EBC3B7;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--urgent);
+  }
+
+  /* section title */
+  .section-label{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 40px 0 16px;
+    color: var(--ink-soft);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .section-label::after{
+    content:"";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* checklist items */
+  .item{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 16px;
+    align-items: start;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .item:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px -22px rgba(59,42,31,0.4);
+  }
+  .item .num{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #EFE6D3;
+    color: var(--tree-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gowun Batang', serif;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .item h3{
+    margin: 2px 0 6px;
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .item p{
+    margin: 0;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+  .item p + p{ margin-top: 6px; }
+  .item .note{
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--clay);
+    background: #FBF1E4;
+    border-radius: 8px;
+    padding: 4px 10px;
+  }
+
+  /* timezone block */
+  .tz{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 22px;
+    margin-bottom: 12px;
+  }
+  .tz h3{
+    margin: 2px 0 16px;
+    font-size: 15.5px;
+    font-weight: 700;
+  }
+  .tz-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .tz-card{
+    text-align: center;
+    min-width: 130px;
+  }
+  .tz-card .flag{ font-size: 26px; }
+  .tz-card .time{
+    font-family: 'Gowun Batang', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--tree-deep);
+    margin-top: 4px;
+  }
+  .tz-card .label{
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+  .tz-arrow{
+    color: var(--clay);
+    font-size: 20px;
+  }
+  .tz-foot{
+    text-align: center;
+    margin-top: 16px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+
+  /* trainee callout */
+  .callout{
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: #EEF2E9;
+    border: 1px solid #D6E0CC;
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin: 24px 0;
+  }
+  .callout .leaf{ font-size: 20px; line-height: 1.4; }
+  .callout p{ margin: 0; font-size: 14.5px; color: var(--tree-deep); }
+
+  /* ---------- archive link card ---------- */
+  .archive-card{
+    display: block;
+    text-decoration: none;
+    background: linear-gradient(135deg, #EEF3E8 0%, #E8F0E0 100%);
+    border: 1px solid #C4D8B8;
+    border-radius: var(--radius);
+    padding: 22px 22px 22px 26px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .archive-card::before{
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--tree);
+    border-radius: var(--radius) 0 0 var(--radius);
+  }
+  .archive-card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px -22px rgba(53,73,47,0.45);
+  }
+  .archive-card:focus-visible{
+    outline: 2px solid var(--tree);
+    outline-offset: 2px;
+  }
+  .archive-inner{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .archive-icon{
+    width: 48px; height: 48px;
+    background: var(--tree-deep);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .archive-body{
+    flex: 1;
+    min-width: 0;
+  }
+  .archive-body h3{
+    margin: 0 0 4px;
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--tree-deep);
+  }
+  .archive-body p{
+    margin: 0 0 10px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+  .archive-chips{
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .archive-chip{
+    font-size: 12px;
+    color: var(--tree-deep);
+    background: rgba(79,107,74,0.14);
+    border-radius: 6px;
+    padding: 3px 9px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .archive-arrow{
+    color: var(--tree);
+    font-size: 20px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-left: 4px;
+    transition: transform 0.15s ease;
+  }
+  .archive-card:hover .archive-arrow{
+    transform: translateX(4px);
+  }
+
+  /* prayer footer */
+  footer{
+    background: linear-gradient(180deg, #EFE6D3 0%, #E4D5B8 100%);
+    padding: 54px 24px 60px;
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+  }
+  footer .mark{
+    font-size: 26px;
+    margin-bottom: 14px;
+  }
+  footer p{
+    font-family: 'Gowun Batang', serif;
+    font-size: 18px;
+    color: var(--bark);
+    max-width: 480px;
+    margin: 0 auto 8px;
+    line-height: 1.8;
+  }
+  footer .small{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 18px;
+  }
+
+  @media (max-width: 480px){
+    header{ padding: 44px 18px 54px; }
+    .item{ grid-template-columns: 34px 1fr; padding: 16px 16px; }
+    .item .num{ width: 34px; height: 34px; font-size: 14px; }
+    .tz-row{ gap: 10px; }
+    .tz-card{ min-width: 100px; }
+    .archive-icon{ width: 40px; height: 40px; font-size: 18px; }
+    .archive-body h3{ font-size: 14.5px; }
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--clay);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="eyebrow">RAONTREE ROASTERY</span>
+  <h1>라오스 선교 기간<br>매장 안내사항</h1>
+  <p class="sub">담임목사가 라오스 AI 교육 선교로 자리를 비우는 동안<br>매장을 지켜주실 스태프분들을 위한 안내입니다.</p>
+  <div class="route-strip">
+    <span class="dot"></span> 부천 라온트리로스터리 <span class="dot"></span> 2026년 8–9월
+  </div>
+</header>
+
+<svg class="curve" viewBox="0 0 1440 60" preserveAspectRatio="none" style="width:100%;height:40px;display:block;">
+  <path d="M0,0 C360,60 1080,60 1440,0 L1440,60 L0,60 Z" fill="#F6EFE3"></path>
+</svg>
+
+<main class="field">
+
+  <div class="urgent">
+    <span class="tag">⚠ 가장 중요</span>
+    <h2>1. 물댄동산지역아동센터 간식 선결제</h2>
+    <p>8월 31일(월), 물댄동산지역아동센터에서 간식을 <strong>선결제</strong>하러 방문합니다.</p>
+    <p>디저트 진열대 오른쪽 하단에 간식 세트를 미리 만들어 두었습니다.</p>
+    <div class="amount">
+      <span>2만원 × 34세트</span>
+      <span>총 68만원</span>
+    </div>
+  </div>
+
+  <div class="section-label">매장 운영</div>
+
+  <div class="item">
+    <div class="num">2</div>
+    <div>
+      <h3>블렌드 원두 보관 위치</h3>
+      <p>창고 테이블 위, 스티커가 붙어있는 노란 뚜껑 박스 안에 있습니다.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="num">3</div>
+    <div>
+      <h3>드립백 필터 보관 위치</h3>
+      <p>포스기 하단 서랍장, 위에서 두 번째 칸에 있습니다.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="num">4</div>
+    <div>
+      <h3>1층 자동문 개폐 확인</h3>
+      <p><strong>개점 시</strong> — 자동문을 열어두고, 문 위 스위치에 불이 들어오지 않는지 확인합니다.</p>
+      <p><strong>폐점 시</strong> — 자동문을 닫아두면 스위치에 불이 들어오면서 자동으로 닫힙니다.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="num">5</div>
+    <div>
+      <h3>화장실 쓰레기 관리</h3>
+      <p>쓰레기가 많이 쌓이면 수시로 비워주세요.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="num">6</div>
+    <div>
+      <h3>여자화장실 휴지 교체</h3>
+      <p>휴지가 다 떨어지면 창문 쪽에 새 휴지가 있습니다.</p>
+      <p>열쇠는 휴지걸이에 꽂혀 있으니, 눌러서 빼낸 뒤 교체해 주세요.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="num">7</div>
+    <div>
+      <h3>쓰레기봉투 보관 위치</h3>
+      <p>바(bar) 안쪽 빨간 쓰레기통 하단에 있습니다.</p>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="num">8</div>
+    <div>
+      <h3>재활용 · 쓰레기 배출</h3>
+      <p>저녁에 길 건너 가로등 밑에 내놓으면 수거해 갑니다.</p>
+    </div>
+  </div>
+
+  <!-- 아카이브 링크 카드 -->
+  <a href="https://raon-easypaster.github.io/raontree/" target="_blank" rel="noopener" class="archive-card" aria-label="라온트리 아카이브 바로가기">
+    <div class="archive-inner">
+      <div class="archive-icon">📂</div>
+      <div class="archive-body">
+        <h3>라온트리 아카이브</h3>
+        <p>메뉴·레시피·원두·교육 자료를 한곳에서 확인하세요.</p>
+        <div class="archive-chips">
+          <span class="archive-chip">메뉴판</span>
+          <span class="archive-chip">레시피</span>
+          <span class="archive-chip">싱글 오리진</span>
+          <span class="archive-chip">교육 자료</span>
+          <span class="archive-chip">영업 시간</span>
+        </div>
+      </div>
+      <div class="archive-arrow">→</div>
+    </div>
+  </a>
+
+  <div class="section-label">라오스 연락 · 시차</div>
+
+  <div class="tz">
+    <h3>9. 한국 ↔ 라오스 시차 (2시간)</h3>
+    <div class="tz-row">
+      <div class="tz-card">
+        <div class="flag">🇰🇷</div>
+        <div class="time">08:30</div>
+        <div class="label">한국 (KST)</div>
+      </div>
+      <div class="tz-arrow">→</div>
+      <div class="tz-card">
+        <div class="flag">🇱🇦</div>
+        <div class="time">06:30</div>
+        <div class="label">라오스 (ICT)</div>
+      </div>
+    </div>
+    <p class="tz-foot">한국이 라오스보다 2시간 빠릅니다. 로밍해 두었으니 평소처럼 전화 주시면 되고, 카카오톡으로도 연락 가능합니다.</p>
+  </div>
+
+  <div class="callout">
+    <span class="leaf">🌱</span>
+    <p><strong>10. 커피 연습생 안내</strong> — 여성분이 오셔서 "커피 연습생이에요"라고 하시면, 편하게 연습하실 수 있도록 배려해 주세요. (오시지 않을 수도 있습니다.)</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="mark">☕ 🌾 🙏</div>
+  <p>라오스 단기선교를 위해<br>기꺼이 헌신해 주셔서 감사합니다.</p>
+  <p style="font-size:15px; color:#6B5C4E;">저희의 건강과 사역을 위해 함께 중보해 주세요.</p>
+  <div class="small">라온트리로스터리 · 라온동행교회</div>
+</footer>
+
+</body>
+</html>
